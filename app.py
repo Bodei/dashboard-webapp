@@ -17,7 +17,7 @@ app.layout = html.Div([
 
     html.Div([
         html.P('The start of the dashboard for senior design project.'),
-        html.P('Lots of work to go...')
+        html.P('Lots of work to go....')
     ])
 
 ],
