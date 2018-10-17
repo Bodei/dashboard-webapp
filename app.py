@@ -54,7 +54,7 @@ app.layout = html.Div([
     html.Div(children=html.Div(id='graphs'), className='row'),
     dcc.Interval(
         id='graph-update',
-        interval=100)
+        interval=2000)
     ], className="container",style={'width':'98%','margin-left':10,'margin-right':10})
 
 @app.callback(
