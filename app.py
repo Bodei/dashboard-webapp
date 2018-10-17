@@ -43,22 +43,23 @@ times, panel_temp, solar_rad, amb_temp, humidity = update_sensor_values(times, p
 
 def serve_layout():
    return html.Div([
-        html.Div([
-            html.H2('Solar Cooling Data',
-                style={'float': 'left',
-                    }),
-            ]),
-        dcc.Dropdown(id='solar-data-name',
-            options=[{'label': s, 'value': s}
-                for s in data_dict.keys()],
-            value=['Panel Temperature','Solar Radiation'],
-            multi=True
-            ),
-        html.Div(children=html.Div(id='graphs'), className='row'),
-        dcc.Interval(
-            id='graph-update',
-            interval=5000)
-        ], className="container",style={'width':'98%','margin-left':10,'margin-right':10})
+       html.Div([
+           html.Div([
+               html.H2('Solar Cooling Dashboard')
+           ], className='container'),
+       ], className='page-footer blue'),
+       dcc.Dropdown(id='solar-data-name',
+           options=[{'label': s, 'value': s}
+               for s in data_dict.keys()],
+           value=['Panel Temperature','Solar Radiation'],
+           multi=True,
+           style={'marginBottom': 50, 'marginTop': 25}
+           ),
+       html.Div(children=html.Div(id='graphs'), className='row'),
+       dcc.Interval(
+           id='graph-update',
+           interval=5000)
+       ], className='container')
 
 app.layout = serve_layout
 
@@ -98,16 +99,16 @@ def update_graph(data_names):
             animate=True,
             figure={'data': [data],'layout' : go.Layout(xaxis=dict(range=[min(times),max(times)]),
                                                         yaxis=dict(range=[min(data_dict[data_name]),max(data_dict[data_name])]),
-                                                        margin={'l':50,'r':1,'t':45,'b':1},
+                                                        margin={'l':50,'r':10,'t':50,'b':50},
                                                         title='{}'.format(data_name))}
             ), className=class_choice))
     return graphs
 
-external_css = ["https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"]
+external_css = ["https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"]
 for css in external_css:
     app.css.append_css({"external_url": css})
 
-external_js = ['https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js']
+external_js = ['https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js']
 for js in external_js:
     app.scripts.append_script({'external_url': js})
 
