@@ -41,23 +41,26 @@ def update_sensor_values(times, panel_temp, solar_rad, amb_temp, humidity):
 
 times, panel_temp, solar_rad, amb_temp, humidity = update_sensor_values(times, panel_temp, solar_rad, amb_temp, humidity)
 
-app.layout = html.Div([
-    html.Div([
-        html.H2('Solar Cooling Data',
-            style={'float': 'left',
-                }),
-        ]),
-    dcc.Dropdown(id='solar-data-name',
-        options=[{'label': s, 'value': s}
-            for s in data_dict.keys()],
-        value=['Panel Temperature','Solar Radiation'],
-        multi=True
-        ),
-    html.Div(children=html.Div(id='graphs'), className='row'),
-    dcc.Interval(
-        id='graph-update',
-        interval=5000)
-    ], className="container",style={'width':'98%','margin-left':10,'margin-right':10})
+def serve_layout():
+   return html.Div([
+        html.Div([
+            html.H2('Solar Cooling Data',
+                style={'float': 'left',
+                    }),
+            ]),
+        dcc.Dropdown(id='solar-data-name',
+            options=[{'label': s, 'value': s}
+                for s in data_dict.keys()],
+            value=['Panel Temperature','Solar Radiation'],
+            multi=True
+            ),
+        html.Div(children=html.Div(id='graphs'), className='row'),
+        dcc.Interval(
+            id='graph-update',
+            interval=5000)
+        ], className="container",style={'width':'98%','margin-left':10,'margin-right':10})
+
+app.layout = serve_layout
 
 @app.callback(
     dash.dependencies.Output('graphs','children'),
