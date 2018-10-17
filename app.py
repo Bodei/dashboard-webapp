@@ -20,7 +20,7 @@ humidity = deque(maxlen=max_length)
 
 data_dict = {"Panel Temperature":panel_temp,
     "Solar Radiation":solar_rad,
-    "Ambient Temperature";amb_temp,
+    "Ambient Temperature":amb_temp,
     "Humidity":humidity}
 
 # Dummy Data
