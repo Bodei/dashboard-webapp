@@ -5,11 +5,13 @@ import time
 import plotly.graph_objs as go
 from collections import deque
 import random
+import os
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 app = dash.Dash('Solar-Cooling-Dashboard', external_stylesheets=external_stylesheets)
 server = app.server
+server.secret_key = os.environ.get('SECRET_KEY', 'my-secret-key')
 
 max_length = 100
 times = deque(maxlen=max_length)
