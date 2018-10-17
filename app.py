@@ -11,7 +11,7 @@ external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 app = dash.Dash('Solar-Cooling-Dashboard', external_stylesheets=external_stylesheets)
 server = app.server
 
-max_length = 20
+max_length = 100
 times = deque(maxlen=max_length)
 panel_temp = deque(maxlen=max_length)
 solar_rad = deque(maxlen=max_length)
@@ -26,12 +26,12 @@ data_dict = {"Panel Temperature":panel_temp,
 # Dummy Data
 def update_sensor_values(times, panel_temp, solar_rad, amb_temp, humidity):
     times.append(time.time())
-    if len(times) == 1
+    if len(times) == 1:
         # Starting relevant values
-        panel_temp.append(random.randrange(60,120)
-        solar_rad.append(random.randrange(1000,2000)
-        amb_temp.append(random.randrange(30,100)
-        humidity.append(random.randrange(10,100)
+        panel_temp.append(random.randrange(60,120))
+        solar_rad.append(random.randrange(1000,2000))
+        amb_temp.append(random.randrange(30,100))
+        humidity.append(random.randrange(10,100))
     else:
         for data_of_interest in [panel_temp, solar_rad, amb_temp, humidity]:
             data_of_interest.append(data_of_interest[-1]+data_of_interest[-1]*random.uniform(-0.0001,0.0001))
@@ -46,7 +46,7 @@ app.layout = html.Div([
                 }),
         ]),
     dcc.Dropdown(id='solar-data-name',
-        options=[{'label': s, 'value' s}
+        options=[{'label': s, 'value': s}
             for s in data_dict.keys()],
         value=['Panel Temperature','Solar Radiation'],
         multi=True
@@ -103,7 +103,7 @@ for css in external_css:
     app.css.append_css({"external_url": css})
 
 external_js = ['https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js']
-for js is external_js:
+for js in external_js:
     app.scripts.append_script({'external_url': js})
 
 if __name__ == '__main__':
