@@ -13,7 +13,7 @@ app = dash.Dash('Solar-Cooling-Dashboard', external_stylesheets=external_stylesh
 server = app.server
 server.secret_key = os.environ.get('SECRET_KEY', 'my-secret-key')
 
-max_length = 100
+max_length = 400
 times = deque(maxlen=max_length)
 panel_temp = deque(maxlen=max_length)
 solar_rad = deque(maxlen=max_length)
