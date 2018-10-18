@@ -58,7 +58,7 @@ def serve_layout():
        html.Div(children=html.Div(id='graphs'), className='row'),
        dcc.Interval(
            id='graph-update',
-           interval=5000)
+           interval=5000, n_intervals=0)
        ], className='container')
 
 app.layout = serve_layout
