@@ -9,7 +9,7 @@ import os
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
-app = dash.Dash('Solar-Cooling-Dashboard', external_stylesheets=external_stylesheets)
+app = dash.Dash('Solar-Cooling-App', external_stylesheets=external_stylesheets)
 server = app.server
 server.secret_key = os.environ.get('SECRET_KEY', 'my-secret-key')
 
